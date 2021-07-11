@@ -11,6 +11,11 @@
 *.gch
 *.pch
 
+# Xcode project files
+*.plist
+*.xcworkspacedata
+*.xcuserstate
+
 # Compiled Dynamic libraries
 *.so
 *.dylib
