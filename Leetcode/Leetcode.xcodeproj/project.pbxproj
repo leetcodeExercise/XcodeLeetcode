@@ -9,10 +9,21 @@
 /* Begin PBXBuildFile section */
 		5DA390EF269AE2F900F1EF41 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA390EE269AE2F900F1EF41 /* main.cpp */; };
 		5DA390F7269AE34100F1EF41 /* romaToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA390F5269AE34100F1EF41 /* romaToInt.cpp */; };
+		5DB7FC74269B0C5300169A99 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FC73269B0C5300169A99 /* main.cpp */; };
+		5DB7FC78269B0C5A00169A99 /* mergeTwoLists.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FC6A269AFC3800169A99 /* mergeTwoLists.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5DA390E9269AE2F900F1EF41 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		5DB7FC6F269B0C5300169A99 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -28,10 +39,21 @@
 		5DA390EE269AE2F900F1EF41 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5DA390F5269AE34100F1EF41 /* romaToInt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = romaToInt.cpp; sourceTree = "<group>"; };
 		5DA390F6269AE34100F1EF41 /* romaToInt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = romaToInt.hpp; sourceTree = "<group>"; };
+		5DB7FC6A269AFC3800169A99 /* mergeTwoLists.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mergeTwoLists.cpp; sourceTree = "<group>"; };
+		5DB7FC6B269AFC3800169A99 /* mergeTwoLists.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mergeTwoLists.hpp; sourceTree = "<group>"; };
+		5DB7FC71269B0C5300169A99 /* mereTwoLiat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mereTwoLiat; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DB7FC73269B0C5300169A99 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5DA390E8269AE2F900F1EF41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DB7FC6E269B0C5300169A99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,7 +66,8 @@
 		5DA390E2269AE2F900F1EF41 = {
 			isa = PBXGroup;
 			children = (
-				5DA390ED269AE2F900F1EF41 /* Leetcode */,
+				5DA390ED269AE2F900F1EF41 /* romaToInt */,
+				5DB7FC72269B0C5300169A99 /* mereTwoLiat */,
 				5DA390EC269AE2F900F1EF41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,18 +76,29 @@
 			isa = PBXGroup;
 			children = (
 				5DA390EB269AE2F900F1EF41 /* Leetcode */,
+				5DB7FC71269B0C5300169A99 /* mereTwoLiat */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5DA390ED269AE2F900F1EF41 /* Leetcode */ = {
+		5DA390ED269AE2F900F1EF41 /* romaToInt */ = {
 			isa = PBXGroup;
 			children = (
 				5DA390EE269AE2F900F1EF41 /* main.cpp */,
 				5DA390F5269AE34100F1EF41 /* romaToInt.cpp */,
 				5DA390F6269AE34100F1EF41 /* romaToInt.hpp */,
 			);
-			path = Leetcode;
+			path = romaToInt;
+			sourceTree = "<group>";
+		};
+		5DB7FC72269B0C5300169A99 /* mereTwoLiat */ = {
+			isa = PBXGroup;
+			children = (
+				5DB7FC6A269AFC3800169A99 /* mergeTwoLists.cpp */,
+				5DB7FC6B269AFC3800169A99 /* mergeTwoLists.hpp */,
+				5DB7FC73269B0C5300169A99 /* main.cpp */,
+			);
+			path = mereTwoLiat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +121,23 @@
 			productReference = 5DA390EB269AE2F900F1EF41 /* Leetcode */;
 			productType = "com.apple.product-type.tool";
 		};
+		5DB7FC70269B0C5300169A99 /* mereTwoLiat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DB7FC75269B0C5300169A99 /* Build configuration list for PBXNativeTarget "mereTwoLiat" */;
+			buildPhases = (
+				5DB7FC6D269B0C5300169A99 /* Sources */,
+				5DB7FC6E269B0C5300169A99 /* Frameworks */,
+				5DB7FC6F269B0C5300169A99 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mereTwoLiat;
+			productName = mereTwoLiat;
+			productReference = 5DB7FC71269B0C5300169A99 /* mereTwoLiat */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +147,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					5DA390EA269AE2F900F1EF41 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					5DB7FC70269B0C5300169A99 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
@@ -114,6 +168,7 @@
 			projectRoot = "";
 			targets = (
 				5DA390EA269AE2F900F1EF41 /* Leetcode */,
+				5DB7FC70269B0C5300169A99 /* mereTwoLiat */,
 			);
 		};
 /* End PBXProject section */
@@ -125,6 +180,15 @@
 			files = (
 				5DA390EF269AE2F900F1EF41 /* main.cpp in Sources */,
 				5DA390F7269AE34100F1EF41 /* romaToInt.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DB7FC6D269B0C5300169A99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DB7FC74269B0C5300169A99 /* main.cpp in Sources */,
+				5DB7FC78269B0C5A00169A99 /* mergeTwoLists.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +322,22 @@
 			};
 			name = Release;
 		};
+		5DB7FC76269B0C5300169A99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5DB7FC77269B0C5300169A99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -275,6 +355,15 @@
 			buildConfigurations = (
 				5DA390F3269AE2F900F1EF41 /* Debug */,
 				5DA390F4269AE2F900F1EF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DB7FC75269B0C5300169A99 /* Build configuration list for PBXNativeTarget "mereTwoLiat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DB7FC76269B0C5300169A99 /* Debug */,
+				5DB7FC77269B0C5300169A99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
