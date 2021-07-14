@@ -21,6 +21,6 @@ struct ListNode {
 class Solution {
 public:
     Solution() {};
-    ListNode* mergeTwoList(ListNode* l1,ListNode* l2);
+    ListNode* mergeTwoList(ListNode* l1, ListNode* l2);
 };
 #endif /* mergeTwoLists_hpp */
