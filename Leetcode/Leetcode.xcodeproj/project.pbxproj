@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D704ED226A1A95F00C80731 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D704ED126A1A95F00C80731 /* main.cpp */; };
 		5DA390EF269AE2F900F1EF41 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA390EE269AE2F900F1EF41 /* main.cpp */; };
 		5DA390F7269AE34100F1EF41 /* romaToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA390F5269AE34100F1EF41 /* romaToInt.cpp */; };
 		5DB7FC74269B0C5300169A99 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FC73269B0C5300169A99 /* main.cpp */; };
@@ -14,6 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5D704ECD26A1A95F00C80731 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		5DA390E9269AE2F900F1EF41 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -35,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D704ECF26A1A95F00C80731 /* EigenDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EigenDemo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D704ED126A1A95F00C80731 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5DA390EB269AE2F900F1EF41 /* Leetcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Leetcode; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA390EE269AE2F900F1EF41 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5DA390F5269AE34100F1EF41 /* romaToInt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = romaToInt.cpp; sourceTree = "<group>"; };
@@ -46,6 +58,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D704ECC26A1A95F00C80731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DA390E8269AE2F900F1EF41 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,11 +82,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D704ED026A1A95F00C80731 /* EigenDemo */ = {
+			isa = PBXGroup;
+			children = (
+				5D704ED126A1A95F00C80731 /* main.cpp */,
+			);
+			path = EigenDemo;
+			sourceTree = "<group>";
+		};
 		5DA390E2269AE2F900F1EF41 = {
 			isa = PBXGroup;
 			children = (
 				5DA390ED269AE2F900F1EF41 /* romaToInt */,
 				5DB7FC72269B0C5300169A99 /* mereTwoLiat */,
+				5D704ED026A1A95F00C80731 /* EigenDemo */,
 				5DA390EC269AE2F900F1EF41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +105,7 @@
 			children = (
 				5DA390EB269AE2F900F1EF41 /* Leetcode */,
 				5DB7FC71269B0C5300169A99 /* mereTwoLiat */,
+				5D704ECF26A1A95F00C80731 /* EigenDemo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +133,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D704ECE26A1A95F00C80731 /* EigenDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D704ED526A1A95F00C80731 /* Build configuration list for PBXNativeTarget "EigenDemo" */;
+			buildPhases = (
+				5D704ECB26A1A95F00C80731 /* Sources */,
+				5D704ECC26A1A95F00C80731 /* Frameworks */,
+				5D704ECD26A1A95F00C80731 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EigenDemo;
+			productName = EigenDemo;
+			productReference = 5D704ECF26A1A95F00C80731 /* EigenDemo */;
+			productType = "com.apple.product-type.tool";
+		};
 		5DA390EA269AE2F900F1EF41 /* Leetcode */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DA390F2269AE2F900F1EF41 /* Build configuration list for PBXNativeTarget "Leetcode" */;
@@ -146,6 +192,9 @@
 			attributes = {
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					5D704ECE26A1A95F00C80731 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					5DA390EA269AE2F900F1EF41 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -169,11 +218,20 @@
 			targets = (
 				5DA390EA269AE2F900F1EF41 /* Leetcode */,
 				5DB7FC70269B0C5300169A99 /* mereTwoLiat */,
+				5D704ECE26A1A95F00C80731 /* EigenDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D704ECB26A1A95F00C80731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D704ED226A1A95F00C80731 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DA390E7269AE2F900F1EF41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,6 +253,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		5D704ED326A1A95F00C80731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5D704ED426A1A95F00C80731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		5DA390F0269AE2F900F1EF41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -341,6 +415,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D704ED526A1A95F00C80731 /* Build configuration list for PBXNativeTarget "EigenDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D704ED326A1A95F00C80731 /* Debug */,
+				5D704ED426A1A95F00C80731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5DA390E6269AE2F900F1EF41 /* Build configuration list for PBXProject "Leetcode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
