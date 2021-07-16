@@ -120,14 +120,14 @@
 			path = romaToInt;
 			sourceTree = "<group>";
 		};
-		5DB7FC72269B0C5300169A99 /* mereTwoLiat */ = {
+		5DB7FC72269B0C5300169A99 /* mergeTwoList */ = {
 			isa = PBXGroup;
 			children = (
 				5DB7FC6A269AFC3800169A99 /* mergeTwoLists.cpp */,
 				5DB7FC6B269AFC3800169A99 /* mergeTwoLists.hpp */,
 				5DB7FC73269B0C5300169A99 /* main.cpp */,
 			);
-			path = mereTwoLiat;
+			path = mergeTwoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

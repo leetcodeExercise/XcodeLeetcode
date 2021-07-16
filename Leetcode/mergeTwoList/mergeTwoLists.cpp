@@ -7,10 +7,10 @@
 
 #include "mergeTwoLists.hpp"
 
-ListNode* Solution::mergeTwoList(ListNode* l1,ListNode* l2) {
-    if (l1 == nullptr)
+ListNode* Solution::mergeTwoList(ListNode* l1, ListNode* l2) {
+    if (!l1)
         return l2;
-    else if (l2 == nullptr)
+    else if (!l2)
         return l1;
     
     if (l1->val < l2->val) {
