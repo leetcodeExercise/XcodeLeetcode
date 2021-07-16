@@ -6,10 +6,11 @@
 //
 
 #include <iostream>
-#include <Eigen/core>
-#include <Eigen/Dense>
 
-int main(int argc, const char * argv[]) {
+#include "Eigen/core"
+#include "Eigen/Dense"
+
+int main(int argc, const char* argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
     
