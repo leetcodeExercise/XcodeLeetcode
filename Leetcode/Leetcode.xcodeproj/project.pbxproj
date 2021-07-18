@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D57199726A40BA30033033D /* eigenPractice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D57199526A40BA30033033D /* eigenPractice.cpp */; };
 		5D704ED226A1A95F00C80731 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D704ED126A1A95F00C80731 /* main.cpp */; };
 		5DA390EF269AE2F900F1EF41 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA390EE269AE2F900F1EF41 /* main.cpp */; };
 		5DA390F7269AE34100F1EF41 /* romaToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA390F5269AE34100F1EF41 /* romaToInt.cpp */; };
@@ -45,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D57199526A40BA30033033D /* eigenPractice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = eigenPractice.cpp; sourceTree = "<group>"; };
+		5D57199626A40BA30033033D /* eigenPractice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eigenPractice.hpp; sourceTree = "<group>"; };
 		5D704ECF26A1A95F00C80731 /* EigenDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EigenDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D704ED126A1A95F00C80731 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5DA390EB269AE2F900F1EF41 /* Leetcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Leetcode; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				5D704ED126A1A95F00C80731 /* main.cpp */,
+				5D57199526A40BA30033033D /* eigenPractice.cpp */,
+				5D57199626A40BA30033033D /* eigenPractice.hpp */,
 			);
 			path = EigenDemo;
 			sourceTree = "<group>";
@@ -94,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA390ED269AE2F900F1EF41 /* romaToInt */,
-				5DB7FC72269B0C5300169A99 /* mereTwoLiat */,
+				5DB7FC72269B0C5300169A99 /* mergeTwoList */,
 				5D704ED026A1A95F00C80731 /* EigenDemo */,
 				5DA390EC269AE2F900F1EF41 /* Products */,
 			);
@@ -229,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D704ED226A1A95F00C80731 /* main.cpp in Sources */,
+				5D57199726A40BA30033033D /* eigenPractice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
