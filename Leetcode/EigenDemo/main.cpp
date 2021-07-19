@@ -7,11 +7,11 @@
 
 #include <iostream>
 
-#include "eigenPractice.hpp"
+#include "eigen_practice.hpp"
 
 int main(int argc, const char* argv[]) {
-    eigenPractice practice;
-    practice.eigenBasic();
-    practice.eigenGeometry();
+    EigenPractice practice;
+    practice.EigenBasic();
+    practice.EigenGeometry();
     return 0;
 }
