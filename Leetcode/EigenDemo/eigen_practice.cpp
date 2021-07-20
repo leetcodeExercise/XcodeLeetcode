@@ -6,6 +6,7 @@
 //
 
 #include <iostream>
+#include <ctime>
 
 #include "Eigen/Eigen"
 
@@ -69,22 +70,22 @@ void EigenPractice::EigenBasic() {
     Eigen::Matrix<double, kMatrixSize, 1> v_Nd =
     Eigen::MatrixXd::Random(kMatrixSize, 1);
 
-    clock_t time_stt = clock();
+    clock_t time_stt = std::clock();
     Eigen::Matrix<double, kMatrixSize, 1> x = matrix_NN.inverse() * v_Nd;
     std::cout << "time of normal inverse is " <<
-    1000 * (clock() - time_stt) / static_cast<double>(CLOCKS_PER_SEC) << "ms" << std::endl;
+    1000.0 * (std::clock() - time_stt) / CLOCKS_PER_SEC << "ms" << std::endl;
     std::cout << "x = " << x.transpose() <<std::endl;
 
-    time_stt = clock();
+    time_stt = std::clock();
     x = matrix_NN.colPivHouseholderQr().solve(v_Nd);
     std::cout << "time of Qr decomposition is " <<
-    1000 * (clock() - time_stt) / static_cast<double>(CLOCKS_PER_SEC) << "ms" << std::endl;
+    1000.0 * (std::clock() - time_stt) / CLOCKS_PER_SEC << "ms" << std::endl;
     std::cout << "x = " << x.transpose() << std::endl;
 
-    time_stt = clock();
+    time_stt = std::clock();
     x = matrix_NN.ldlt().solve(v_Nd);
     std::cout << "time of ldlt decomposition is " <<
-    1000 * (clock() - time_stt) / static_cast<double>(CLOCKS_PER_SEC) << "ms" << std::endl;
+    1000 * (std::clock() - time_stt) / CLOCKS_PER_SEC << "ms" << std::endl;
     std::cout << "x = " << x.transpose() << std::endl;
 }
 
