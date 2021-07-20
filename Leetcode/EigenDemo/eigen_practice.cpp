@@ -4,6 +4,11 @@
 //
 //  Created by dsh on 2021/7/18.
 //
+
+#include <iostream>
+
+#include "Eigen/Eigen"
+
 #include "eigen_practice.hpp"
 
 void EigenPractice::EigenBasic() {
@@ -58,14 +63,14 @@ void EigenPractice::EigenBasic() {
     std::cout << eigen_solver.eigenvectors() <<std::endl;
 
     //matrix_NN * x = v_Nd
-    Eigen::Matrix<double, MATRIX_SIZE, MATRIX_SIZE> matrix_NN
-    = Eigen::MatrixXd::Random(MATRIX_SIZE, MATRIX_SIZE);
+    Eigen::Matrix<double, kMatrixSize, kMatrixSize> matrix_NN
+    = Eigen::MatrixXd::Random(kMatrixSize, kMatrixSize);
     matrix_NN = matrix_NN * matrix_NN.transpose();
-    Eigen::Matrix<double, MATRIX_SIZE, 1> v_Nd =
-    Eigen::MatrixXd::Random(MATRIX_SIZE, 1);
+    Eigen::Matrix<double, kMatrixSize, 1> v_Nd =
+    Eigen::MatrixXd::Random(kMatrixSize, 1);
 
     clock_t time_stt = clock();
-    Eigen::Matrix<double, MATRIX_SIZE, 1> x = matrix_NN.inverse() * v_Nd;
+    Eigen::Matrix<double, kMatrixSize, 1> x = matrix_NN.inverse() * v_Nd;
     std::cout << "time of normal inverse is " <<
     1000 * (clock() - time_stt) / static_cast<double>(CLOCKS_PER_SEC) << "ms" << std::endl;
     std::cout << "x = " << x.transpose() <<std::endl;

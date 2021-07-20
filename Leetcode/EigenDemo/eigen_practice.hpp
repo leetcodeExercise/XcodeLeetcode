@@ -8,12 +8,7 @@
 #ifndef EIGENDEMO_EIGEN_PRACTICE_H_
 #define EIGENDEMO_EIGEN_PRACTICE_H_
 
-#include <iostream>
-#include <stdio.h>
-
-#include "Eigen/Eigen"
-
-constexpr int MATRIX_SIZE = 50;
+constexpr int kMatrixSize = 50;
 
 class EigenPractice {
   public:
