@@ -8,14 +8,14 @@
 #ifndef TREE_BINARY_TREE
 #define TREE_BINARY_TREE
 
-#include <vector>
 #include <stack>
+#include <vector>
 
 class TreeNode {
   public:
     int data;
-    TreeNode *right;
-    TreeNode *left;
+    TreeNode* right;
+    TreeNode* left;
 };
 
 enum class BTreeOrderType {
@@ -28,14 +28,12 @@ enum class BTreeOrderType {
 class BTree {
   public:
     BTree() = default;
-    void CreatBTree(TreeNode* tree);
+    TreeNode* CreatBTree(std::vector<int>& level_order,TreeNode* tree_root, int iterator);
     std::vector<int> Traversal(BTreeOrderType orderType, TreeNode* root);
-        
-  private:
-    void PreOrderTraversal(TreeNode* root, std::vector<int>& temp);
-    void InOrderTraversal(TreeNode* root, std::vector<int>& temp);
-    void PostOrderTraversal(TreeNode* root, std::vector<int>& temp);
-    void LevelTraversal(TreeNode*root, std::vector<int>& temp);
+    void PreOrderTraversal(TreeNode* root, std::vector<int>& result);
+    void InOrderTraversal(TreeNode* root, std::vector<int>& result);
+    void PostOrderTraversal(TreeNode* root, std::vector<int>& result);
+    void LevelTraversal(TreeNode* root, std::vector<int>& result);
 };
 
 #endif  // TREE_BINARY_TREE

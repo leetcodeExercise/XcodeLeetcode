@@ -5,30 +5,28 @@
 //  Created by dsh on 2021/7/21.
 //
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
 #include "binary_tree.hpp"
 
-void BTree::CreatBTree(TreeNode* tree) {
-    int data;
-    std::cin >> data;
-    if (data == '-1') return;
-    else {
-        if (data == -2)
-            tree = nullptr;
-        else {
-            std::cout << "debug 2" << std::endl;
-            tree = new TreeNode;
-            tree->data = data;
-            CreatBTree(tree->left);
-            CreatBTree(tree->right);
-        }
+// TODO: what about incomplete binary tree?
+TreeNode* BTree::CreatBTree(std::vector<int>& level_order,
+                           TreeNode* tree_root, int iterator) {
+    if (iterator < level_order.size()) {
+        TreeNode* tree = new TreeNode;
+        tree->left = nullptr;
+        tree->right = nullptr;
+        tree_root = tree;
+        tree_root->data = level_order[iterator];
+        tree_root->left = CreatBTree(level_order, tree_root->left, 2 * iterator + 1);
+        tree_root->right = CreatBTree(level_order, tree_root->right, 2 * iterator + 2);
     }
+    return tree_root;
 }
 
 std::vector<int> BTree::Traversal(BTreeOrderType orderType,
-                                                TreeNode* root) {
+                                  TreeNode* root) {
     std::vector<int> result;
     
     switch (orderType) {
@@ -48,31 +46,31 @@ std::vector<int> BTree::Traversal(BTreeOrderType orderType,
     return result;
 }
 
-void BTree::PreOrderTraversal(TreeNode* root, std::vector<int>& temp) {
+void BTree::PreOrderTraversal(TreeNode* root, std::vector<int>& result) {
     if (!root) return;
-    temp.push_back(root->data);
-    PreOrderTraversal(root->left, temp);
-    PreOrderTraversal(root->right, temp);
+    result.push_back(root->data);
+    PreOrderTraversal(root->left, result);
+    PreOrderTraversal(root->right, result);
 }
 
-void BTree::InOrderTraversal(TreeNode* root, std::vector<int>& temp) {
+void BTree::InOrderTraversal(TreeNode* root, std::vector<int>& result) {
     if (!root) return;
-    InOrderTraversal(root->left, temp);
-    temp.push_back(root->data);
-    InOrderTraversal(root->right, temp);
+    InOrderTraversal(root->left, result);
+    result.push_back(root->data);
+    InOrderTraversal(root->right, result);
 }
 
-void BTree::PostOrderTraversal(TreeNode* root, std::vector<int>& temp) {
+void BTree::PostOrderTraversal(TreeNode* root, std::vector<int>& result) {
     if (!root) return;
-    PostOrderTraversal(root->left, temp);
-    PostOrderTraversal(root->right, temp);
-    temp.push_back(root->data);
+    PostOrderTraversal(root->left, result);
+    PostOrderTraversal(root->right, result);
+    result.push_back(root->data);
 }
 
-// TODO: finish level traversal
-void BTree::LevelTraversal(TreeNode* root, std::vector<int>& temp) {
+// TODO: complete the func
+void BTree::LevelTraversal(TreeNode* root, std::vector<int>& result) {
     if (!root) return;
-    temp.push_back(root->data);
-    PostOrderTraversal(root->left, temp);
-    PostOrderTraversal(root->right, temp);
+    result.push_back(root->data);
+    PostOrderTraversal(root->left, result);
+    PostOrderTraversal(root->right, result);
 }

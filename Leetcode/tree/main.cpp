@@ -10,14 +10,19 @@
 #include "binary_tree.hpp"
 
 int main() {
-    TreeNode tree;
+    TreeNode* tree = new TreeNode;
     BTreeOrderType orderType = BTreeOrderType::PreOrder;
     BTree bTree;
-    
-    std::cout << "PLS input the tree InOrderTraversal" << std::endl;
-    bTree.CreatBTree(&tree);
-    std::cout << "debug 1 " << std::endl;
-    std::vector<int> result = bTree.Traversal(orderType, &tree);
+    //      1
+    //     / \
+    //    2   3
+    //   / \ / \
+    //  4  5 6 7
+    // / \ /
+    //8  9 0
+    std::vector<int> level_order = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    tree = bTree.CreatBTree(level_order, tree, 0);
+    std::vector<int> result = bTree.Traversal(orderType, tree);
     
     std::cout << "result is: " << std::endl;
     for (int i = 0; i < result.size(); i++) {
