@@ -39,9 +39,6 @@ std::vector<int> BTree::Traversal(BTreeOrderType orderType,
         case BTreeOrderType::PostOrder:
             PostOrderTraversal(root, result);
             break;
-        case BTreeOrderType::Level:
-            LevelTraversal(root, result);
-            break;
     }
     return result;
 }
@@ -67,10 +64,13 @@ void BTree::PostOrderTraversal(TreeNode* root, std::vector<int>& result) {
     result.push_back(root->data);
 }
 
-// TODO: complete the func
-void BTree::LevelTraversal(TreeNode* root, std::vector<int>& result) {
+void BTree::LevelTraversal(TreeNode* root, std::vector<std::vector<int>>& result,
+                           int depth) {
     if (!root) return;
-    result.push_back(root->data);
-    PostOrderTraversal(root->left, result);
-    PostOrderTraversal(root->right, result);
+    while (result.size() <= depth) {
+        result.push_back({});
+    }
+    result[depth].push_back(root->data);
+    LevelTraversal(root->left, result, depth + 1);
+    LevelTraversal(root->right, result, depth + 1);
 }

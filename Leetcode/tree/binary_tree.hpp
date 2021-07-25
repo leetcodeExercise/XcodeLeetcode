@@ -22,7 +22,6 @@ enum class BTreeOrderType {
     PreOrder = 0,
     InOrder = 1,
     PostOrder = 2,
-    Level = 3,
 };
 
 class BTree {
@@ -33,7 +32,8 @@ class BTree {
     void PreOrderTraversal(TreeNode* root, std::vector<int>& result);
     void InOrderTraversal(TreeNode* root, std::vector<int>& result);
     void PostOrderTraversal(TreeNode* root, std::vector<int>& result);
-    void LevelTraversal(TreeNode* root, std::vector<int>& result);
+    void LevelTraversal(TreeNode* root, std::vector<std::vector<int>>& result,
+                        int depth);
 };
 
 #endif  // TREE_BINARY_TREE
