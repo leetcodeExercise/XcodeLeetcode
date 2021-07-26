@@ -11,38 +11,41 @@
 #include "binary_tree.hpp"
 
 // TODO: what about incomplete binary tree?
-TreeNode* BTree::CreatBTree(std::vector<int>& level_order,
-                           TreeNode* tree_root, int iterator) {
+TreeNode* BTree::CreatSubTree(const std::vector<int>& level_order, int iterator) {
     if (iterator < level_order.size()) {
-        TreeNode* tree = new TreeNode;
-        tree->left = nullptr;
-        tree->right = nullptr;
-        tree_root = tree;
-        tree_root->data = level_order[iterator];
-        tree_root->left = CreatBTree(level_order, tree_root->left, 2 * iterator + 1);
-        tree_root->right = CreatBTree(level_order, tree_root->right, 2 * iterator + 2);
+        TreeNode* tree = new TreeNode();
+        tree->data = level_order[iterator];
+        tree->left = CreatSubTree(level_order, 2 * iterator + 1);
+        tree->right = CreatSubTree(level_order, 2 * iterator + 2);
+        return tree;
+    } else {
+        return nullptr;
     }
-    return tree_root;
+    
 }
 
-std::vector<int> BTree::Traversal(BTreeOrderType orderType,
-                                  TreeNode* root) {
+std::vector<int> BTree::Traversal(BTreeOrderType order_type) {
     std::vector<int> result;
     
-    switch (orderType) {
+    switch (order_type) {
         case BTreeOrderType::PreOrder:
-            PreOrderTraversal(root, result);
+            PreOrderTraversal(_root, result);
             break;
         case BTreeOrderType::InOrder:
-            InOrderTraversal(root, result);
+            InOrderTraversal(_root, result);
             break;
         case BTreeOrderType::PostOrder:
-            PostOrderTraversal(root, result);
+            PostOrderTraversal(_root, result);
             break;
     }
     return result;
 }
 
+std::vector<std::vector<int>> BTree::LevelTraversal() {
+    std::vector<std::vector<int>> result;
+    InnerLevelTraversal(_root, result, 0);
+    return result;
+}
 void BTree::PreOrderTraversal(TreeNode* root, std::vector<int>& result) {
     if (!root) return;
     result.push_back(root->data);
@@ -64,13 +67,13 @@ void BTree::PostOrderTraversal(TreeNode* root, std::vector<int>& result) {
     result.push_back(root->data);
 }
 
-void BTree::LevelTraversal(TreeNode* root, std::vector<std::vector<int>>& result,
-                           int depth) {
+void BTree::InnerLevelTraversal(TreeNode* root, std::vector<std::vector<int>>& result,
+                                int depth) {
     if (!root) return;
     while (result.size() <= depth) {
         result.push_back({});
     }
     result[depth].push_back(root->data);
-    LevelTraversal(root->left, result, depth + 1);
-    LevelTraversal(root->right, result, depth + 1);
+    InnerLevelTraversal(root->left, result, depth + 1);
+    InnerLevelTraversal(root->right, result, depth + 1);
 }
