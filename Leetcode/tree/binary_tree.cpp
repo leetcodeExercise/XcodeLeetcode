@@ -10,13 +10,27 @@
 
 #include "binary_tree.hpp"
 
+TreeNode::~TreeNode() {
+    if (left) {
+        left->~TreeNode();
+        free(left);
+        std::cout << "free left node" << std::endl;
+    }
+    if (right) {
+        right->~TreeNode();
+        free(right);
+        std::cout << "free right node" << std::endl;
+    }
+    std::cout << "~TreeNode() succeed, value: " << this->data << std::endl;
+}
+
 // TODO: what about incomplete binary tree?
-TreeNode* BTree::CreatSubTree(const std::vector<int>& level_order, int iterator) {
-    if (iterator < level_order.size()) {
+TreeNode* BTree::CreatSubTree(const std::vector<int>& levelOrder, int iterator) {
+    if (iterator < levelOrder.size()) {
         TreeNode* tree = new TreeNode();
-        tree->data = level_order[iterator];
-        tree->left = CreatSubTree(level_order, 2 * iterator + 1);
-        tree->right = CreatSubTree(level_order, 2 * iterator + 2);
+        tree->data = levelOrder[iterator];
+        tree->left = CreatSubTree(levelOrder, 2 * iterator + 1);
+        tree->right = CreatSubTree(levelOrder, 2 * iterator + 2);
         return tree;
     } else {
         return nullptr;
@@ -24,10 +38,10 @@ TreeNode* BTree::CreatSubTree(const std::vector<int>& level_order, int iterator)
     
 }
 
-std::vector<int> BTree::Traversal(BTreeOrderType order_type) {
+std::vector<int> BTree::Traversal(BTreeOrderType orderType) {
     std::vector<int> result;
     
-    switch (order_type) {
+    switch (orderType) {
         case BTreeOrderType::PreOrder:
             PreOrderTraversal(_root, result);
             break;
