@@ -8,7 +8,6 @@
 #ifndef TREE_BINARY_TREE_HPP
 #define TREE_BINARY_TREE_HPP
 
-#include <iostream>
 #include <vector>
 
 struct TreeNode {
