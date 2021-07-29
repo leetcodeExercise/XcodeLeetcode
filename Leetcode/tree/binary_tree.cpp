@@ -24,9 +24,8 @@ TreeNode::~TreeNode() {
     std::cout << "~TreeNode() succeed, value: " << this->data << std::endl;
 }
 
-// TODO: what about incomplete binary tree?
 TreeNode* BTree::CreatSubTree(const std::vector<int>& levelOrder, int iterator) {
-    if (iterator < levelOrder.size()) {
+    if (iterator < levelOrder.size() && levelOrder[iterator] != -1) {
         TreeNode* tree = new TreeNode();
         tree->data = levelOrder[iterator];
         tree->left = CreatSubTree(levelOrder, 2 * iterator + 1);
@@ -35,7 +34,6 @@ TreeNode* BTree::CreatSubTree(const std::vector<int>& levelOrder, int iterator) 
     } else {
         return nullptr;
     }
-    
 }
 
 std::vector<int> BTree::Traversal(BTreeOrderType orderType) {
