@@ -10,14 +10,15 @@
 #include "binary_tree.hpp"
 
 int main() {
-    //       1
-    //      / \
-    //     2   3
-    //    / \ / \
-    //   4  5 6 7
-    //  / \ /
-    // 8  9 0
-    std::vector<int> levelOrder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    //       1                         1
+    //      / \                      /   \
+    //     2   3                    2     3
+    //    / \ / \                  / \   / \
+    //   4  5 6 7                -1  -1 6   7
+    //  / \ /                          / \
+    // 8  9 0                         0  -1
+    // std::vector<int> levelOrder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    std::vector<int> levelOrder = {1, 2, 3, -1, -1, 6, 7, 0, -1};
     BTree bTree = BTree(levelOrder);
     std::vector<int> result = bTree.Traversal(BTreeOrderType::PreOrder);
     
