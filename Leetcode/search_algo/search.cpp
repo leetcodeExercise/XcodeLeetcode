@@ -5,7 +5,6 @@
 //  Created by dsh on 2021/7/30.
 //
 
-#include <iostream>
 #include <vector>
 
 #include "search.hpp"
@@ -34,7 +33,6 @@ std::vector<std::vector<int>> Permutation(const std::vector<int>& nums) {
     return result;
 }
 
-// TODO: result is incorrect
 void PermutationDfs(int depth, std::vector<int>& subResult,
                     std::vector<std::vector<int>>& result,
                     std::vector<int>& used,
