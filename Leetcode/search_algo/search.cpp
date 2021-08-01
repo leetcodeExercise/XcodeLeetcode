@@ -29,15 +29,15 @@ std::vector<std::vector<int>> Permutation(const std::vector<int>& nums) {
     std::vector<std::vector<int>> result;
     std::vector<int> subResult;
     std::vector<int> used(length);
-    PermutationDfs(0, subResult, result, used, length, nums);
+    PermutationDfs(0, nums, length, used, subResult, result);
     return result;
 }
 
-void PermutationDfs(int depth, std::vector<int>& subResult,
-                    std::vector<std::vector<int>>& result,
-                    std::vector<int>& used,
+void PermutationDfs(int depth, const std::vector<int>& nums,
                     const int length,
-                    const std::vector<int>& nums) {
+                    std::vector<int>& used,
+                    std::vector<int>& subResult,
+                    std::vector<std::vector<int>>& result) {
     if (depth == length) {
         result.push_back(subResult);
         return;
@@ -46,7 +46,7 @@ void PermutationDfs(int depth, std::vector<int>& subResult,
         if (used[i]) continue;
         used[i] = 1;
         subResult.push_back(nums[i]);
-        PermutationDfs(depth + 1, subResult, result, used, length, nums);
+        PermutationDfs(depth + 1, nums, length, used, subResult, result);
         subResult.pop_back();
         used[i] = 0;
     }

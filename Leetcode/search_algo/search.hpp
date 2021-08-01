@@ -11,10 +11,10 @@
 #include <vector>
 
 std::vector<std::vector<int>> Permutation(const std::vector<int>& nums);
-void PermutationDfs(int depth, std::vector<int>& subResult,
-                    std::vector<std::vector<int>>& result,
-                    std::vector<int>& used,
+void PermutationDfs(int depth, const std::vector<int>& nums,
                     const int length,
-                    const std::vector<int>& nums);
+                    std::vector<int>& used,
+                    std::vector<int>& subResult,
+                    std::vector<std::vector<int>>& result);
 
 #endif /* SEARCH_ALGO_SEARCH_HPP */
