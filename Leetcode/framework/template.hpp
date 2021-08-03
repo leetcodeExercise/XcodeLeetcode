@@ -11,109 +11,149 @@
 #include <iostream>
 #include <vector>
 
-class Planner1Variable {
+class Variable {
   public:
-    Planner1Variable() = default;
-    explicit Planner1Variable(int id, int* pointer) : index(id), ptr(pointer) {}
-    ~Planner1Variable() {
-        if (ptr) free(ptr);
-        std::cout << " ~Planner1Variable() succeed! " << std::endl;
-    }
+    Variable() = default;
+    ~Variable() = default;
     
-    int index;
-    int* ptr;
-};
-
-class Planner2Variable {
-  public:
-    Planner2Variable() = default;
-    explicit Planner2Variable(int id, std::vector<char> objects) :
-    index(id), value(objects) {}
-    ~Planner2Variable() {}
-    
-    int index;
-    std::vector<char> value;
-};
-
-class Planner1Result {
-  public:
-    explicit Planner1Result(Planner1Variable variable_init) : x(variable_init) {}
-    ~Planner1Result() {}
-    Planner1Variable x;
-    double n;
-    std::vector<double> values1;
-    std::vector<std::vector<int>> values2;
-};
-
-class Planner2Result {
-  public:
-    explicit Planner2Result(Planner2Variable variable_init) : x(variable_init) {}
-    ~Planner2Result() {}
-    Planner2Variable x;
-    double n;
-};
-
-template<class Variable, class Result>
-class SectionResult {
-  public:
-    explicit SectionResult(Variable variable, Result result) :
-    _variable(_variable), _result(result) {}
-    ~SectionResult() {}
-    
-    virtual void Variable2ResultMapping() = 0;
-    void set_variable(Variable set_variable) { _variable = set_variable; }
-    Result get_result() const { return _result; }
+    virtual void UpdateVariable() = 0;
+    virtual void ClearVariable() = 0;
     
   private:
-    Variable _variable;
-    Result _result;
+    bool _isUpdate = false;
 };
 
-class Section1Result : public SectionResult<Planner1Variable, Planner1Result> {
+class Planner1Variable : public Variable {
   public:
-    explicit Section1Result(Planner1Variable v, Planner1Result r) : SectionResult(v, r) {}
-    ~Section1Result() {}
+    Planner1Variable() = default;
+    ~Planner1Variable();
     
-    void Variable2ResultMapping() {
-        std::cout << "Section1Result: Variable2ResultMapping" << std::endl;
-    }
+    void UpdateVariable();
+    void ClearVariable();
+    
+  private:
+    int _index;
+    int* _ptr;
 };
 
-class Section2Result : public SectionResult<Planner2Variable, Planner2Result> {
+class Planner2Variable : public Variable {
   public:
-    explicit Section2Result(Planner2Variable v, Planner2Result r) : SectionResult(v, r) {}
-    ~Section2Result() {}
+    Planner2Variable() = default;
+    ~Planner2Variable() = default;
+  
+    void UpdateVariable();
+    void ClearVariable();
     
-    void Variable2ResultMapping() {
-        std::cout << "Section2Result: Variable2ResultMapping" << std::endl;
-    }
+  private:
+    int _index;
+    std::vector<char> _value;
 };
 
-template<class Result, class DependencyData>
+class Result {
+  public:
+    Result() = default;
+    ~Result() = default;
+    
+    virtual void UpdateResult() = 0;
+    virtual void ClearResult() = 0;
+    virtual void Variable2Result() = 0;
+    
+  private:
+    bool _isUpdate = false;
+};
+
+class Planner1Result : public Result {
+  public:
+    struct RelativeData {
+        double n;
+        std::vector<double> values1;
+        std::vector<std::vector<int>> values2;
+    };
+    
+
+    explicit Planner1Result(std::shared_ptr<Variable> variable)
+        : _variable(variable) {}
+    ~Planner1Result() = default;
+    
+    void UpdateResult();
+    void ClearResult();
+    void Variable2Result();
+    std::pair<std::shared_ptr<Variable>, std::shared_ptr<RelativeData>>
+        GetResult() const { return _result; }
+    
+  private:
+    std::shared_ptr<Variable> _variable;
+    RelativeData _relativeData;
+    std::pair<std::shared_ptr<Variable>, std::shared_ptr<RelativeData>> _result;
+};
+
+class Planner2Result : public Result {
+  public:
+    struct RelativeData {
+        double n;
+    };
+    explicit Planner2Result(std::shared_ptr<Variable> variable)
+        : _variable(variable) {}
+    ~Planner2Result() = default;
+    
+    void UpdateResult();
+    void ClearResult();
+    void Variable2Result();
+    std::pair<std::shared_ptr<Variable>, std::shared_ptr<RelativeData>>
+        GetResult() const { return _result; }
+    
+  private:
+    std::shared_ptr<Variable> _variable;
+    RelativeData _relativeData;
+    std::pair<std::shared_ptr<Variable>, std::shared_ptr<RelativeData>> _result;
+};
+
+class Section;
+
+class Dependency {
+  public:
+    explicit Dependency(std::shared_ptr<Result> result,
+                        std::shared_ptr<Section> section)
+        : _result(result), _section(section) {}
+    ~Dependency() = default;
+    
+  private:
+    std::shared_ptr<Result> _result;
+    std::shared_ptr<Section> _section;
+};
+
+class Dependency1 : public Dependency {
+    // TODO:
+};
+
+class Dependency2 : public Dependency {
+    // TODO:
+};
+
+class Constraint;
+class Cost;
+
 class Section {
   public:
     explicit Section() {}
-    ~Section() {};
+    ~Section() {}
+    
+    virtual Variable MakePlan();
     
   private:
-    Result _sectionResult;
-    std::vector<DependencyData> _dependencies;
-    Section* _nextSection;
+    std::shared_ptr<Result> _sectionResult;
+    std::vector<std::shared_ptr<Dependency>> _dependencies;
+    std::shared_ptr<Section> _nextSection;
+    std::shared_ptr<Constraint> _constraint;
+    std::shared_ptr<Cost> _cost;
 };
 
-class Section1Dependency {
-  public:
-    Section1Dependency() = default;
-    ~Section1Dependency() {}
-  private:
-    Section2Result _data;
-    // TODO: 怎么实现？
-    // Section* _preSection
+class Section1 : public Section {
+    // TODO:
 };
 
-// TODO: 怎么实现？
-// class Section1 public : Section<Section1Result, Section1Dependency> {};
-
-class Section2 {};
+class Section2 : public Section {
+    // TODO:
+};
 
 #endif /* FREAMEWORK_TEMPLATE_HPP */
