@@ -17,7 +17,7 @@ class Variable {
     
     virtual void UpdateVariable() = 0;
     virtual void ClearVariable() = 0;
-    bool IsUpdated() { return _isUpdated; }
+    bool IsUpdated() const;
     
   protected:
     bool _isUpdated = false;
@@ -57,7 +57,7 @@ class Result {
     virtual void UpdateResult() = 0;
     virtual void ClearResult() = 0;
     virtual void Variable2Result() = 0;
-    bool ISUpdated() { return _isUpdated; }
+    bool ISUpdated() const;
     
   protected:
     bool _isUpdated = false;
@@ -71,6 +71,9 @@ class Planner1Result : public Result {
         std::vector<std::vector<int>> values2;
     };
     
+    typedef std::pair<std::shared_ptr<const Variable>, std::shared_ptr<const RelativeData>>
+        Result;
+    
     explicit Planner1Result(std::shared_ptr<const Variable> variable)
         : _variable(variable) {}
     ~Planner1Result() = default;
@@ -78,12 +81,12 @@ class Planner1Result : public Result {
     void UpdateResult();
     void ClearResult();
     void Variable2Result();
-    auto GetResult() const { return _result; }
+    Result GetResult() const { return _result; }
     
   private:
     std::shared_ptr<const Variable> _variable;
     RelativeData _relativeData;
-    std::pair<std::shared_ptr<const Variable>, std::shared_ptr<const RelativeData>> _result;
+    Result _result;
 };
 
 class Planner2Result : public Result {
@@ -91,6 +94,10 @@ class Planner2Result : public Result {
     struct RelativeData {
         double n;
     };
+    
+    typedef std::pair<std::shared_ptr<const Variable>, std::shared_ptr<const RelativeData>>
+        Result;
+
     explicit Planner2Result(std::shared_ptr<const Variable> variable)
         : _variable(variable) {}
     ~Planner2Result() = default;
@@ -98,40 +105,30 @@ class Planner2Result : public Result {
     void UpdateResult();
     void ClearResult();
     void Variable2Result();
-    auto GetResult() const { return _result; }
+    Result GetResult() const { return _result; }
     
   private:
     std::shared_ptr<const Variable> _variable;
     RelativeData _relativeData;
-    std::pair<std::shared_ptr<const Variable>, std::shared_ptr<const RelativeData>> _result;
+    Result _result;
 };
 
 class Section;
 
-struct PreDependency {
-    std::pair<std::shared_ptr<const Result>, std::shared_ptr<const Section>> preDependency;
-};
-
-struct NextDependency {
-    std::shared_ptr<const Section> nextDependency;
-};
-
-struct PreSectionDependencies {
-    std::vector<std::shared_ptr<const PreDependency>> preSectionDependencies;
-};
-
-struct NextSectionDependencies {
-    std::vector<std::shared_ptr<const NextDependency>> nextSectionDependencies;
-};
+typedef std::pair<std::shared_ptr<const Result>, std::shared_ptr<const Section>>
+    PreDependency;
+typedef std::shared_ptr<const Section> NextDependency;
+typedef std::vector<std::shared_ptr<const PreDependency>> PreSectionDependencies;
+typedef std::vector<std::shared_ptr<const NextDependency>> NextSectionDependencies;
 
 class Dependencies {
   public:
     Dependencies() = default;
     ~Dependencies() = default;
     
-    void AddDependency(std::shared_ptr<const PreDependency> add,
+    void AddDependency(std::shared_ptr<const PreDependency> dependency,
                        std::shared_ptr<PreSectionDependencies> sectionDependencies);
-    void AddDependency(std::shared_ptr<const NextDependency> add,
+    void AddDependency(std::shared_ptr<const NextDependency> dependency,
                        std::shared_ptr<NextSectionDependencies> sectionDependencies);
 };
 
@@ -142,9 +139,7 @@ class Section1PreDependencies : public Dependencies {
     }
     ~Section1PreDependencies() = default;
     
-    PreSectionDependencies GetSectionDependencies() const {
-        return _preSectionDependencies;
-    }
+    PreSectionDependencies GetSectionDependencies() const;
     
  private:
     PreSectionDependencies _preSectionDependencies;
@@ -157,9 +152,7 @@ class Section1NextDependencies : public Dependencies {
     }
     ~Section1NextDependencies() = default;
     
-    NextSectionDependencies GetSectionDependencies() const {
-        return _nextSectionDependencies;
-    }
+    NextSectionDependencies GetSectionDependencies() const;
     
  private:
     NextSectionDependencies _nextSectionDependencies;
@@ -180,11 +173,11 @@ class Section {
           _targets(targets), _constraint(constraint), _cost(cost) {}
     ~Section();
     
-    auto GetPreDependencies() const { return _preDependencies; }
-    auto GetNextDependencies() const { return _nextDependencies; }
-    auto GetTargets() const { return _targets; }
-    auto GetConstraint() const { return _constraint; }
-    auto GetCost() const { return _cost; }
+    std::shared_ptr<const Dependencies> GetPreDependencies() const;
+    std::shared_ptr<const Dependencies> GetNextDependencies() const;
+    std::shared_ptr<const Targets> GetTargets() const;
+    std::shared_ptr<Constraint> GetConstraint() const;
+    std::shared_ptr<Cost> GetCost() const;
         
   protected:
     virtual void BuildConstraint() = 0;
@@ -210,15 +203,15 @@ class Planner {
     explicit Planner() {}
     ~Planner();
     
-    virtual Variable MakePlan();
+    virtual Variable MakePlan() = 0;
     
   protected:
     std::unique_ptr<const Section> _section;
-    Variable _variable;
+    Variable _variable;  // TODO:
 };
 
 class Planner1 : public Planner {
     // TODO:
 };
 
-#endif /* FREAMEWORK_TEMPLATE_HPP */
+#endif  /* FREAMEWORK_TEMPLATE_HPP */
