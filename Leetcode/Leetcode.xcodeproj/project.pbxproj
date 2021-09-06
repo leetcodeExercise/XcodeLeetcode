@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1220B226E65876004821CC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D1220B126E65876004821CC /* main.cpp */; };
 		5D57199726A40BA30033033D /* eigen_practice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D57199526A40BA30033033D /* eigen_practice.cpp */; };
 		5D704ED226A1A95F00C80731 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D704ED126A1A95F00C80731 /* main.cpp */; };
 		5D7D8DD926B42DA900CF3F14 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D8DD826B42DA900CF3F14 /* main.cpp */; };
@@ -22,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5D1220AD26E65876004821CC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		5D704ECD26A1A95F00C80731 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,6 +89,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D1220AF26E65876004821CC /* SmartPointer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SmartPointer; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1220B126E65876004821CC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5D1220B626E6592B004821CC /* source.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = source.hpp; sourceTree = "<group>"; };
 		5D57199526A40BA30033033D /* eigen_practice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = eigen_practice.cpp; sourceTree = "<group>"; };
 		5D57199626A40BA30033033D /* eigen_practice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eigen_practice.hpp; sourceTree = "<group>"; };
 		5D704ECF26A1A95F00C80731 /* EigenDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EigenDemo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +119,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D1220AC26E65876004821CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D704ECC26A1A95F00C80731 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,6 +171,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D1220B026E65876004821CC /* SmartPointer */ = {
+			isa = PBXGroup;
+			children = (
+				5D1220B126E65876004821CC /* main.cpp */,
+				5D1220B626E6592B004821CC /* source.hpp */,
+			);
+			path = SmartPointer;
+			sourceTree = "<group>";
+		};
 		5D704ED026A1A95F00C80731 /* EigenDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +219,7 @@
 				5DD6C83A26A848BD00EDA22F /* tree */,
 				5D7D8DD726B42DA900CF3F14 /* search_algo */,
 				5D7D8DE526B8090400CF3F14 /* framework */,
+				5D1220B026E65876004821CC /* SmartPointer */,
 				5DA390EC269AE2F900F1EF41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -203,6 +233,7 @@
 				5DD6C83926A848BD00EDA22F /* tree */,
 				5D7D8DD626B42DA900CF3F14 /* search_algo */,
 				5D7D8DE426B8090400CF3F14 /* framework */,
+				5D1220AF26E65876004821CC /* SmartPointer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +271,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D1220AE26E65876004821CC /* SmartPointer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D1220B526E65876004821CC /* Build configuration list for PBXNativeTarget "SmartPointer" */;
+			buildPhases = (
+				5D1220AB26E65876004821CC /* Sources */,
+				5D1220AC26E65876004821CC /* Frameworks */,
+				5D1220AD26E65876004821CC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartPointer;
+			productName = SmartPointer;
+			productReference = 5D1220AF26E65876004821CC /* SmartPointer */;
+			productType = "com.apple.product-type.tool";
+		};
 		5D704ECE26A1A95F00C80731 /* EigenDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D704ED526A1A95F00C80731 /* Build configuration list for PBXNativeTarget "EigenDemo" */;
@@ -350,6 +398,9 @@
 			attributes = {
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					5D1220AE26E65876004821CC = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					5D704ECE26A1A95F00C80731 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -389,11 +440,20 @@
 				5DD6C83826A848BD00EDA22F /* tree */,
 				5D7D8DD526B42DA900CF3F14 /* search_algo */,
 				5D7D8DE326B8090400CF3F14 /* framework */,
+				5D1220AE26E65876004821CC /* SmartPointer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D1220AB26E65876004821CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D1220B226E65876004821CC /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D704ECB26A1A95F00C80731 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,6 +511,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		5D1220B326E65876004821CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5D1220B426E65876004821CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		5D704ED326A1A95F00C80731 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -661,6 +737,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D1220B526E65876004821CC /* Build configuration list for PBXNativeTarget "SmartPointer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D1220B326E65876004821CC /* Debug */,
+				5D1220B426E65876004821CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5D704ED526A1A95F00C80731 /* Build configuration list for PBXNativeTarget "EigenDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
