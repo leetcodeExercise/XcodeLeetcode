@@ -32,6 +32,30 @@ private:
     
 };
 
+class MotionAction : public Action {
+public:
+    explicit MotionAction(int data) : Action(Type::Motion), _data(data) {}
+    ~MotionAction() = default;
+    
+    int data() const { return _data; }
+        
+private:
+    int _data = 0;
+    
+};
+
+class DecisionAction : public Action {
+public:
+    explicit DecisionAction(int data) : Action(Type::Decision), _data(data) {}
+    ~DecisionAction() = default;
+    
+    int data() const { return _data; }
+    
+private:
+    int _data = 0;
+    
+};
+
 class Section {
 public:
     explicit Section(Type type) : _type(type) {}

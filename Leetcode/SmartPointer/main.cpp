@@ -9,17 +9,21 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+
 #include "source.hpp"
 
 int main(int argc, const char* argv[]) {
     TopLevelGraph topLevelGraph = {};
     std::unordered_map<std::shared_ptr<const Action>, std::shared_ptr<const Section>> map;
-    std::vector<Type> type = {Type::Motion, Type::Decision, Type::Motion};
     std::vector<std::shared_ptr<const Action>> actionGroup;
-    for (size_t i = 0; i < type.size(); i++) {
-        Action action(type[i]);
-        actionGroup.push_back(std::make_shared<const Action>(action));
-    }
+    MotionAction ma1(0), ma2(1), ma3(2);
+    DecisionAction da1(3), da2(4);
+    actionGroup.push_back(std::make_shared<const MotionAction>(ma1));
+    actionGroup.push_back(std::make_shared<const MotionAction>(ma2));
+    actionGroup.push_back(std::make_shared<const MotionAction>(ma3));
+    actionGroup.push_back(std::make_shared<const DecisionAction>(da1));
+    actionGroup.push_back(std::make_shared<const DecisionAction>(da2));
+
     for (size_t i = 0; i < actionGroup.size(); i++) {
         switch (actionGroup[i].get()->type()) {
             case Type::Motion: {
@@ -35,9 +39,7 @@ int main(int argc, const char* argv[]) {
                 break;
             }
             case Type::NotDefine: {
-                SectionCreator sectionCreator(actionGroup[i]);
-                topLevelGraph.push_back(sectionCreator.section());
-                map[actionGroup[i]] = sectionCreator.section();
+                std::cout << "Type not defined" << std::endl;
                 break;
             }
         }
