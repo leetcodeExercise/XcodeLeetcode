@@ -10,12 +10,17 @@
 #include <unordered_map>
 #include <vector>
 
-#include "source.hpp"
+#include "action.hpp"
+#include "section.hpp"
+
+typedef std::vector<std::shared_ptr<const Section>> TopLevelGraph;
+typedef std::vector<std::shared_ptr<const Action>> ActionGroup;
+typedef std::unordered_map<std::shared_ptr<const Action>, std::shared_ptr<const Section>> ASMap;
 
 int main(int argc, const char* argv[]) {
     TopLevelGraph topLevelGraph = {};
-    std::unordered_map<std::shared_ptr<const Action>, std::shared_ptr<const Section>> map;
-    std::vector<std::shared_ptr<const Action>> actionGroup;
+    ASMap map;
+    ActionGroup actionGroup;
     MotionAction ma1(0), ma2(1), ma3(2);
     DecisionAction da1(3), da2(4);
     actionGroup.push_back(std::make_shared<const MotionAction>(ma1));
@@ -23,17 +28,20 @@ int main(int argc, const char* argv[]) {
     actionGroup.push_back(std::make_shared<const MotionAction>(ma3));
     actionGroup.push_back(std::make_shared<const DecisionAction>(da1));
     actionGroup.push_back(std::make_shared<const DecisionAction>(da2));
-
-    for (size_t i = 0; i < actionGroup.size(); i++) {
+    // Throw error when destroy shared_ptr
+    // std::shared_ptr<const DecisionAction> decisionAction =
+    //     static_cast<std::shared_ptr<const DecisionAction>>(
+    //         static_cast<const DecisionAction*>(actionGroup[0].get()));
+    for (int i = 0; i < actionGroup.size(); i++) {
         switch (actionGroup[i].get()->type()) {
             case Type::Motion: {
-                SectionCreator sectionCreator(actionGroup[i]);
+                MotionSectionCreator sectionCreator(actionGroup[i], i);
                 topLevelGraph.push_back(sectionCreator.section());
                 map[actionGroup[i]] = sectionCreator.section();
                 break;
             }
             case Type::Decision: {
-                SectionCreator sectionCreator(actionGroup[i]);
+                DecisionSectionCreator sectionCreator(actionGroup[i], i);
                 topLevelGraph.push_back(sectionCreator.section());
                 map[actionGroup[i]] = sectionCreator.section();
                 break;
@@ -45,7 +53,7 @@ int main(int argc, const char* argv[]) {
         }
     }
     
-    for (size_t i = 0; i < topLevelGraph.size(); i++) {
+    for (int i = 0; i < topLevelGraph.size(); i++) {
         std::cout << "TopLevelGraph[" << i << "]: "
             << static_cast<int>(topLevelGraph[i].get()->type()) << std::endl;
     }

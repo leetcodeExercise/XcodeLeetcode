@@ -91,7 +91,8 @@
 /* Begin PBXFileReference section */
 		5D1220AF26E65876004821CC /* SmartPointer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SmartPointer; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1220B126E65876004821CC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		5D1220B626E6592B004821CC /* source.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = source.hpp; sourceTree = "<group>"; };
+		5D1220B626E6592B004821CC /* action.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = action.hpp; sourceTree = "<group>"; };
+		5D1220B726E7A64B004821CC /* section.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = section.hpp; sourceTree = "<group>"; };
 		5D57199526A40BA30033033D /* eigen_practice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = eigen_practice.cpp; sourceTree = "<group>"; };
 		5D57199626A40BA30033033D /* eigen_practice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = eigen_practice.hpp; sourceTree = "<group>"; };
 		5D704ECF26A1A95F00C80731 /* EigenDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EigenDemo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				5D1220B126E65876004821CC /* main.cpp */,
-				5D1220B626E6592B004821CC /* source.hpp */,
+				5D1220B626E6592B004821CC /* action.hpp */,
+				5D1220B726E7A64B004821CC /* section.hpp */,
 			);
 			path = SmartPointer;
 			sourceTree = "<group>";
