@@ -34,12 +34,10 @@ int main(int argc, const char* argv[]) {
     std::cout << "p count: " << p.use_count() << std::endl;
     int *q = p.get();  // ok
     std::cout << "p count: " << p.use_count() << std::endl;  // 1
-    {
-        // new block
-        // undefined: two independent shared_ptr point to the same memory
-        (std::shared_ptr<int>(q));
-        std::cout << "p count: " << p.use_count() << std::endl;  // 1
-    }  // block end, q is destroyed, and the memory to which q points is free
+    // undefined: two independent shared_ptr point to the same memory
+    (std::shared_ptr<int>(q));  // q is destroyed, and the memory to which q points is free
+    std::cout << "p count: " << p.use_count() << std::endl;  // 1
+
     std::cout << "p count: " << p.use_count() << std::endl;
     int foo = *p;  // undefined, the memory to which p points is free
     std::cout << "foo: " << foo << std::endl;  // 0
